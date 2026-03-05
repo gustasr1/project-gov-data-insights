@@ -24,5 +24,3 @@ df_teste.shape
 caminho = ('..\\data\\processed\\CPGF_consolidado.csv')
 
 df.to_csv(caminho, sep=";", encoding='utf-8', index=False)
-
-# %%
