@@ -18,4 +18,35 @@ df.isnull().sum()
 df['cpf_portador']= df['cpf_portador'].fillna('sigiloso')
 
 # %%
-#ano extrato mes extrato e data transação
+#Removendo duplicatas - Não será removido pois não há dados de identificador ú
+# nico
+df.duplicated().sum()
+df[df.duplicated(keep=False)]
+
+# %%
+
+#Ajustando Dtypes
+df.dtypes
+#%%
+df = df.astype({
+	'cod_orgao_superior' : 'category',
+    'nome_orgao_superior' : 'category',
+	'cod_orgao' : 'category',
+	'nome_orgao' : 'category',
+	'cod_unid_gestora' : 'category',
+	'nome_unid_gestora' : 'category'
+})
+# %%
+
+df['data_transacao'] = pd.to_datetime(df['data_transacao'])
+# %%
+
+#Replace para transformar coluna em float
+df['valor_transacao'] = df['valor_transacao'].str.replace(',','.').astype(float)
+
+# %%
+df['cpf_portador'] = df['cpf_portador'].astype(str)
+# %%
+df['cnpj_cpf_favorecido'] = df['cnpj_cpf_favorecido'].astype(str)
+# %%
+df.info()
