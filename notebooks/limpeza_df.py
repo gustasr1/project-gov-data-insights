@@ -63,4 +63,4 @@ for coluna in colunas_categ:
 	df[coluna] = df[coluna].str.strip().str.title().astype('category')
 
 # %%
-df.to_csv('..\\data\\processed\\CPGF_consolidado_final.csv', sep=';', encoding='utf-8-sig')
+df.to_csv('..\\data\\processed\\CPGF_consolidado_final.csv', sep=';', encoding='utf-8-sig', index=False)
