@@ -49,4 +49,18 @@ df['cpf_portador'] = df['cpf_portador'].astype(str)
 # %%
 df['cnpj_cpf_favorecido'] = df['cnpj_cpf_favorecido'].astype(str)
 # %%
-df.info()
+
+colunas_categ = [
+    'nome_orgao_superior', 
+    'nome_orgao', 
+    'nome_unid_gestora', 
+    'nome_portador', 
+    'nome_favorecido', 
+    'transacao'
+]
+
+for coluna in colunas_categ:
+	df[coluna] = df[coluna].str.strip().str.title().astype('category')
+
+# %%
+df.to_csv('..\\data\\processed\\CPGF_consolidado_final.csv', sep=';', encoding='utf-8-sig')
